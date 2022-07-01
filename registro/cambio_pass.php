@@ -30,7 +30,6 @@
     $error_clave = "";
     return true;
  }
-
  if (isset($_POST['guardar'])) {
     $contra1 = $_POST['contra'];
     $contra2 = $_POST['contra1'];

@@ -30,6 +30,9 @@ if (isset($_POST['guardar'])) {
         header('Location: ../index.php');
     } else {
         
+
+
+        
         $pregu = "SELECT * from tbl_preguntas_respuestas_usuarios where id_pregunta = '$pregunta' and id_usuario='$id'";
         $numrespp = $mysqli->query($prgu);
         $num4 = $numrespp->num_rows;
@@ -95,7 +98,7 @@ if (isset($_POST['guardar'])) {
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Ingrese una respuesta</label>
-                                                    <input autocomplete= "false" class="form-control py-4" type="text" name="respuesta" maxlength="100" placeholder="Escriba su respuesta" required />
+                                                    <input autocomplete= "False" class="form-control py-4" type="text" name="respuesta" maxlength="100" placeholder="Escriba su respuesta" required />
                                                 </div>
                                             </div>
 
