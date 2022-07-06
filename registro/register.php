@@ -78,43 +78,43 @@ if(isset($_POST['continuar_registro'])){
                                         <form class="" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                                 <div class="form-row " style="margin:20px 20px 10px 20px">
                                                      <div class="col-md-6">
-                                                        <div class="form-group"><label class="small mb-1" for="inputprimernombre"><b>Ingrese su primer nombre</b> </label><input class="form-control py-4" id="Ingresoprimernombre" type="text" name="ingresoprimernombre" placeholder="Su nombre" maxlength="15" autofocus  required /></div>
+                                                        <div class="form-group"><label class="small mb-1" for="inputprimernombre"><b>Primer Nombre</b> </label><input class="form-control py-4" id="Ingresoprimernombre" type="text" name="ingresoprimernombre" placeholder="Su Primer Nombre" maxlength="15" autofocus  required /></div>
                                                      </div>
                                                      <div class="col-md-6">
-                                                            <div class="form-group"><label class="small mb-1" for="inputsegundonombre"><b>Ingrese su segundo nombre</b> </label><input class="form-control py-4" id="Ingresosegundonombre" type="text" name="ingresosegundonombre" placeholder="Su segundo nombre"maxlength="15" required /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputsegundonombre"><b>Segundo Nombre</b> </label><input class="form-control py-4" id="Ingresosegundonombre" type="text" name="ingresosegundonombre" placeholder="Su Segundo Nombre"maxlength="15" required /></div>
                                                         </div>  
                                                         <div class="col-md-6">
-                                                            <div class="form-group"><label class="small mb-1" for="inputprimerapellido"><b>Ingrese su primer apellido</b> </label><input class="form-control py-4" id="Ingresoprimerapellido" type="text" name="ingresoprimerapellido" placeholder="Su primer apellido"maxlength="15" required   /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputprimerapellido"><b>Primer Apellido</b> </label><input class="form-control py-4" id="Ingresoprimerapellido" type="text" name="ingresoprimerapellido" placeholder="Su Primer Apellido"maxlength="15" required   /></div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group"><label class="small mb-1" for="inputsegundoapellido"><b>Ingrese su segundo apellido</b> </label><input class="form-control py-4" id="Ingresosegundoapellido" type="text" name="ingresosegundoapellido" placeholder="Su segundo apellido"maxlength="15" required   /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputsegundoapellido"><b>Segundo Apellido</b> </label><input class="form-control py-4" id="Ingresosegundoapellido" type="text" name="ingresosegundoapellido" placeholder="Su Segundo Apellido"maxlength="15" required   /></div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group"><label class="small mb-1" for="inputcorreopersonal"><b>Correo personal</b>*Este será su usuario</label><input class="form-control py-4" id="Ingresocorreopersonal" type="email" name="ingresocorreopersonal" placeholder="ejemplocorreo@gmail.com"  required /></div>
                                                         </div>   
                                                         <div class="col-md-6">
-                                                            <div class="form-group"><label class="small mb-1" for="inputcorreoempresa"><b>Correo electronico de empresa</b> </label><input class="form-control py-4" id="Ingresocorreoempresa" type="email" name="ingresocorreoempresa" placeholder="ejemplocorreo@gmail.org" required  /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputcorreoempresa"><b>Correo Empresa</b> </label><input class="form-control py-4" id="Ingresocorreoempresa" type="email" name="ingresocorreoempresa" placeholder="ejemplocorreo@gmail.org" required  /></div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group"><label class="small mb-1" for="inputnumerodetelefono"><b>Numero de telefono</b> *Solo numeros</label><input class="form-control py-4" id="Ingresotelefono" type="number" name="ingresotelefono" placeholder="Su numero de Telefono" maxlength="12" min="0" required  /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputnumerodetelefono"><b>Número De Teléfono</b> *Solo numeros</label><input class="form-control py-4" id="Ingresotelefono" type="number" name="ingresotelefono" placeholder="Su numero de Telefono" maxlength="12" min="0" required  /></div>
                                                         </div>                                   
                                                         <div class="col-md-6">
-                                                            <div class="form-group"><label class="small mb-1" for="inputfechanacimiento"><b>Fecha de nacimiento</b> </label><input class="form-control py-4" id="Fechadenacimiento" type="Date" name="ingresonacimiento" placeholder="su fecha de nacimiento" required   /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputfechanacimiento"><b>Fecha De Nacimiento</b> </label><input class="form-control py-4" id="Fechadenacimiento" type="Date" name="ingresonacimiento" placeholder="Su fecha de nacimiento" required   /></div>
                                                         </div>
                                                         <div class="col-md-8">
-                                                            <div class="form-group"><label class="small mb-1" for="inputidentidad"><b>Numero de Identidad</b>*Solo números y sin guiones</label><input class="form-control py-4" id="Ingresesunumerodeidentidad" type="number" name="ingresoidentidad" placeholder="Su Identidad" maxlength="15" min="0" required /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputidentidad"><b>Número De Identidad</b>*Solo números y sin guiones</label><input class="form-control py-4" id="Ingresesunumerodeidentidad" type="number" name="ingresoidentidad" placeholder="Su numero Identidad" maxlength="15" min="0" required /></div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <div class="form-group"><label class="small mb-1" for="inputfechacontratacion"><b>Fecha de contratacion</b> </label><input class="form-control py-4" id="Ingresofechadecontratacion" type="Date" name="ingresocontratacion" placeholder="Su fecha contratacion" required  /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputfechacontratacion"><b>Fecha De Contratacion</b> </label><input class="form-control py-4" id="Ingresofechadecontratacion" type="Date" name="ingresocontratacion" placeholder="Su fecha contratacion" required  /></div>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <div class="form-group"><label class="small mb-1" for="inputdireccion"><b>Direccion completa(barrio, colonia, #casa etc)</b> </label><input class="form-control py-4" id="Ingresodireccion" type="text" name="ingresodireccion" placeholder="Su Direccion" maxlength="200" required  /></div> 
+                                                            <div class="form-group"><label class="small mb-1" for="inputdireccion"><b>Direccion Completa(barrio, colonia, #casa etc)</b> </label><input class="form-control py-4" id="Ingresodireccion" type="text" name="ingresodireccion" placeholder="Su Direccion" maxlength="200" required  /></div> 
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <div class="form-group"><label class="small mb-1" for="inputhorariotrabajo"><b>Horario de trabajo</b> </label><input class="form-control py-4" id="horariodetrabajo" type="text" name="ingresohorario" placeholder="Su horario laboral"maxlength="100" required  /></div>
+                                                            <div class="form-group"><label class="small mb-1" for="inputhorariotrabajo"><b>Horario De Trabajo</b> </label><input class="form-control py-4" id="horariodetrabajo" type="text" name="ingresohorario" placeholder="Su horario laboral"maxlength="100" required  /></div>
                                                         </div>   
                                                         <div class="col-md-6">
-                                                        <label class="small mb-1"><b>Seleccione su especialidad</b> </label>
+                                                        <label class="small mb-1"><b>Seleccione Especialidad</b> </label>
                                                             <select name="select_especialidades" id="select_especialidades" required>
                                                             <option name="option_especialidades" value="0" ></option>
                                                             <?php while($row = $resultado->fetch_assoc()){ ?>
@@ -123,8 +123,8 @@ if(isset($_POST['continuar_registro'])){
                                                             </select>
                                                         </div> 
                                                         <div class="col-md-6">
-                                                        <label class="small mb-1"><b>Seleccione su puesto asignado</b> </label>
-                                                            <select name="select_puestos" id="select_puestos" required>
+                                                        <label class="small mb-1"><b>Seleccione Puesto Asignado</b> </label>
+                                                            <select name="select_puestos" id="select_puestos"  required> "
                                                             <option name="option_puestos" value="0" ></option>
                                                             <?php while($row2 = $resultado3->fetch_assoc()){ ?>
                                                             <option value="<?php echo $row2['cod_puesto'];?>"><?php echo $row2['nombre_puesto']; ?></option>
@@ -168,4 +168,3 @@ if(isset($_POST['continuar_registro'])){
         <script src="js/scripts.js"></script>
     </body>
 </html>
-

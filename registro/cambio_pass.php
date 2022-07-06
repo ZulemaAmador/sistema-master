@@ -2,41 +2,13 @@
   include '../conexion.php';
   session_start();
   
-  function validar_clave($clave,&$error_clave){
-    if(strlen($clave) < 6){
-       $error_clave = "La clave debe tener al menos 6 caracteres";
-       return false;
-    }
-    if(strlen($clave) > 16){
-       $error_clave = "La clave no puede tener más de 16 caracteres";
-       return false;
-    }
-    if (!preg_match('`[a-z]`',$clave)){
-       $error_clave = "La clave debe tener al menos una letra minúscula";
-       return false;
-    }
-    if (!preg_match('`[A-Z]`',$clave)){
-       $error_clave = "La clave debe tener al menos una letra mayúscula";
-       return false;
-    }
-    if (!preg_match('`[0-9]`',$clave)){
-       $error_clave = "La clave debe tener al menos un caracter numérico";
-       return false;
-    }
-    if (preg_match('" "',$clave)){
-        $error_clave = "No se permiten espacios";
-        return false;
-     }
-    $error_clave = "";
-    return true;
- }
  if (isset($_POST['guardar'])) {
     $contra1 = $_POST['contra'];
     $contra2 = $_POST['contra1'];
     if ($contra1 == $contra2) {
         $contra1 = sha1($contra1);
         $id = $_SESSION['user']['cod_usuario'];
-        $sql = "SELECT * FROM tbl_historial_contraseña where id_usuario = '$id'";
+        $sql = "SELECT * FROM tbl_historial_contraseñas where id_usuario = '$id'";
         $resultado = $mysqli->query($sql);
         $num = $resultado->num_rows;
 
@@ -46,12 +18,13 @@
             </script>";
         } else {
 
-            $sql = "INSERT INTO tbl_historial_contraseñas (id_usuario,contraseña,creado_por_fecha_creacion,modificado_por,fecha_modificacion) Values('$id','$contra1','$id',now(),'$id',now())";
+            $sql = "INSERT INTO tbl_historial_contraseñas (id_usuario,contraseña,creado_por,fecha_creacion,modificado_por,fecha_modificacion) Values('$id','$contra1','$id',now(),'$id',now())";
             $mysqli->query($sql);
             $sql = "UPDATE tbl_usuarios_login set clave_usuario = '$contra1' where cod_usuario = '$id'";
             $mysqli->query($sql);
+            unset($_SESSION['user']);
             echo "<script> alert ('Registrado Correctamente');
-            location.href ='./config_preguntas_seguridad.php';
+            location.href ='../index.php';
             </script>";
         }
     } else {
@@ -60,7 +33,7 @@
             </script>";
     }
 }
-?>
+    ?>
 
 <!DOCTYPE html5>
 <html lang="es">

@@ -10,11 +10,14 @@ $row4 = $p->fetch_assoc();
 
 $pregu = $row4['valor'];
 
-$sql2 = "SELECT * FROM tbl_preguntas_usuarios limit $pregu";
+
+$sql2 = "SELECT * FROM tbl_preguntas_usuarios";
 $resultado2 = $mysqli->query($sql2);
 
+$id = $_SESSION['user']['cod_usuario'];
+
 if (isset($_POST['guardar'])) {
-    $id = $_SESSION['pasar_numero_usuario'];
+
     $pregunta = $_POST['pregunta'];
     $resp = $_POST['respuesta'];
 
@@ -25,16 +28,13 @@ if (isset($_POST['guardar'])) {
     $num4 = $numrespp->num_rows;
 
     if ($pregu == $num4) {
-        $sql1 = mysqli_query($conn, "UPDATE tbl_usuarios_login SET numero_ingresos=numero_ingresos+1,num_preguntas_contestadas='$pregu',modificado_por='$id',fecha_modificacion=now() WHERE cod_usuario='$id'");
-        $resultado1 = $mysqli->query($sql1);
-        header('Location: ../index.php');
-    } else {
-        
+        $pregu ="UPDATE tbl_usuarios_login SET numero_ingresos=1 WHERE cod_usuario='$id'";
+        $mysqli->query($pregu);
+        header('Location: ./cambio_pass.php');
+     } else {
 
-
-        
-        $pregu = "SELECT * from tbl_preguntas_respuestas_usuarios where id_pregunta = '$pregunta' and id_usuario='$id'";
-        $numrespp = $mysqli->query($prgu);
+        $pregu = "SELECT * from tbl_preguntas_respuestas_usuarios where id_pregunta = '$pregunta' and id_usuario = '$id'";
+        $numrespp = $mysqli->query($pregu);
         $num4 = $numrespp->num_rows;
         if ($num4 > 0) {
             echo "<script> alert ('Esta pregunta ya fue registrada,favor seleccion otra');
@@ -49,9 +49,6 @@ if (isset($_POST['guardar'])) {
         }
     }
 }
-
-
-
 ?>
 
 
@@ -98,7 +95,7 @@ if (isset($_POST['guardar'])) {
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Ingrese una respuesta</label>
-                                                    <input autocomplete= "False" class="form-control py-4" type="text" name="respuesta" maxlength="100" placeholder="Escriba su respuesta" required />
+                                                    <input autocomplete="off" class="form-control py-4" type="text" name="respuesta" maxlength="100" placeholder="Escriba su respuesta" required />
                                                 </div>
                                             </div>
 

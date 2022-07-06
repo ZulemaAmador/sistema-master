@@ -5,10 +5,17 @@
 	if(!isset($_SESSION['id'])){
 		header("Location: index.php");
 	}
-	
-	$id = $_SESSION['id'];
-	$tipo_usuario = $_SESSION['tipo_usuario'];
-	
+
+	$id = $_SESSION['pasar_numero_usuario'];
+
+	$sql3 = "SELECT *from tbl_usuarios_login
+	WHERE cod_usuario='$id'";
+	$resultado3 = $mysqli->query($sql3);
+	$row3=$resultado3->fetch_assoc();
+
+
+	$tipo_usuario = $row3['id_rol_usuario']; 
+	$where="";
 	if($tipo_usuario == 1){
 		$where = "";
 		} else if($tipo_usuario == 2){
@@ -17,8 +24,8 @@
 	
 	$sql = "SELECT * FROM tbl_usuarios_login  $where";
 	$resultado = $mysqli->query($sql);
-	
-	
+	echo "$tipo_usuario"
+    
 ?>
 
 <!DOCTYPE html>
@@ -29,14 +36,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
-		<title>Tables - SB Admin</title>
+		<title>Tablas_NPH</title>
 		<link href="css/styles.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
 	<body class="sb-nav-fixed">
 		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-			<a class="navbar-brand" href="index.html">INICIO</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+			<a class="navbar-brand" href="principal.php">INICIO</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
 			><!-- Navbar Search-->
 			<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 				<div class="input-group">
@@ -53,7 +60,7 @@
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 						<a class="dropdown-item" href="#">Configuración</a><a class="dropdown-item" href="#">Actividad de usuario</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="login.html">Logout</a>
+						<a class="dropdown-item" href="logout.php">Cerrar sesión</a>
 					</div>
 				</li>
 			</ul>
@@ -75,11 +82,11 @@
 								<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
 								></a>
 								<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-									<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
+									<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Navegación estatica</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
 								</div>
 								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
 								><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-									Pages
+									Paginas
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
 									></a>
 									<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
@@ -89,7 +96,7 @@
 												<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
 												></a>
 												<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-													<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Iniciar sesión</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
+													<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Iniciar sesión</a><a class="nav-link" href="register.php">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
 												</div>
 												<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
 												>Errores
@@ -111,48 +118,70 @@
 						</div>
 					</div>
 					<div class="sb-sidenav-footer">
-						<div class="small">Logged in as:</div>
-						Start Bootstrap
+						<div class="small">Logeado como:</div>
+						INICIO
 					</div>
 				</nav>
 			</div>
 			<div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid">
-						<h1 class="mt-4">Tables</h1>
+						<h1 class="mt-4">Tablas</h1>
 						<ol class="breadcrumb mb-4">
-							<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-							<li class="breadcrumb-item active">Tables</li>
+							<li class="breadcrumb-item"><a href="principal.php">Tablero</a></li>
+							<li class="breadcrumb-item active">Tablas</li>
 						</ol>
 						<div class="card mb-4">
-							<div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
+							<div class="card-body">Tabla<a target="_blank" href="https://datatables.net/">-Usarios</a>.</div>
 						</div>
 						<div class="card mb-4">
-							<div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+							<div class="card-header"><i class="fas fa-table mr-1"></i>Lista de usuarios</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
+												<th>Edición</th>
+												<th>Eliminar</th>
 												<th>Usuario</th>
 												<th>Contraseña</th>
 												<th>Nombre</th>
 												<th>Tipo Usuario</th>
+												<th>Estado</th>
 											</tr>
 										</thead>
 								
 										<tbody>
-											<?php while($row = $resultado->fetch_assoc()) { ?>
-												
+											
+											<?php while($row = $resultado->fetch_assoc()) {
+												$usuario=$row['nombre_usuario_correo']; 
+												$idrol=$row['id_rol_usuario']; 
+			
+												  $sql1 = "SELECT primer_nombre,primer_apellido from tbl_empleados
+												  WHERE correo_personal='$usuario'";
+												  $resultado1 = $mysqli->query($sql1);
+												  $row1=$resultado1->fetch_assoc();
+
+												  $sql2 = "SELECT rol from tbl_roles_usuarios
+												  WHERE id_rol='$idrol'";
+												  $resultado2 = $mysqli->query($sql2);
+												  $row2=$resultado2->fetch_assoc();
+													?>
 												<tr>
+													<td><div style="margin-top:2px;"><button class="btn btn-primary btn-xs" style="background:blue" onclick="location.href='registro/actualizar_usuario.php'"  name="editar_usuario">Editar</button></div></div></td>
+													<td><div style="margin-top:2px;"><button class="btn btn-primary btn-xs" style="background:red" name="eliminar_usuario">Eliminar</button></div></div></td>
 													<td><?php echo $row['nombre_usuario_correo']; ?></td>
 													<td><?php echo $row['clave_usuario']; ?></td>
-													<td><?php echo $row['cod_empleado']; ?></td>
-													<td><?php echo $row['id_rol_usuario']; ?></td>
+													<td><?php echo $row1['primer_nombre'].' '.$row1['primer_apellido']; ?></td>
+													<td><?php echo $row2['rol']; ?></td>
+													<td><?php echo $row['estado_usuario']; ?></td>
 												</tr>
 											<?php } ?>
+											<?php if($tipo_usuario==1){?>
+												<h1 class="box-title"><button class="btn btn-success" style="background:green" onclick="location.href='registro/register.php'" id="btnagregar"><i class="fa fa-plus-circle"></i>Nuevo usuario</button></h1>
+										<?php }?>
 										</tbody>
-									</table>
+										</table>
 								</div>
 								</div>
 								</div>
@@ -161,7 +190,7 @@
 					<footer class="py-4 bg-light mt-auto">
 						<div class="container-fluid">
 						<div class="d-flex align-items-center justify-content-between small">
-					<div class="text-muted">Copyright &copy; Your Website 2019</div>
+					<div class="text-muted">Copyright &copy; vilches 2022</div>
 					<div>
 						<a href="#">Privacy Policy</a>
 						&middot;

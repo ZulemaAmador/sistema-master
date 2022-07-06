@@ -48,14 +48,14 @@ if($_POST){
 
                 if($ingresos==0){
                     $_SESSION['user'] = $row;
-                    header("Location: ./registro/cambio_pass.php");
+                    header("Location: ./registro/config_preguntas_seguridad.php");
                 }else{
                     header("Location: principal.php");
                     $sql2="UPDATE tbl_parametros SET valor = '3' WHERE id_usuario= '$numusuario' and parametro='ADMIN_INTENTOS'";
                     $resultado2 = $mysqli->query($sql2);
                     $sql2="UPDATE tbl_usuarios_login SET numero_ingresos = numero_ingresos + 1, fecha_ultima_conexion= NOW() WHERE cod_usuario= '$numusuario'";
                     $resultado2 = $mysqli->query($sql2);
-                    $_SESSION['id'] = $row['cod_usuario'];
+                    $_SESSION['pasar_numero_usuario'] = $row['cod_usuario'];
                     $_SESSION['nombre'] = $row['nombre_usuario_correo'];
                     exit();
                 }
@@ -82,7 +82,6 @@ if($_POST){
   function_alert("El usuario no existe, debe crear una cuenta");
   }
 }
-$_SESSION['pasar_numero_usuario']=$numusuario;
  ?>
 
 
@@ -117,7 +116,8 @@ $_SESSION['pasar_numero_usuario']=$numusuario;
 
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" style="background:white" href="password.html"><b>Olvidó su contraseña?</b></a>
-                                              <button class="btn btn-primary" type="submit" name="ingresar">Ingresar</button></div>
+                                              <button class="btn btn-primary" type="submit" name="ingresar">Ingresar</button>
+                                            </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
